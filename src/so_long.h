@@ -1,8 +1,7 @@
 #	ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "/usr/X11/include/mlx.h"
-// # include "mlx.h"
+# include "mlx.h"
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
