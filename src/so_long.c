@@ -42,32 +42,20 @@ static void	get_position(t_game *game)
 
 int	main(int argc, char **argv)
 {
-	t_game	*game;
+	t_game	game;
 
 	if (argc != 2 || !is_valid_extension(argv[1]))
-	{
-		perror("Error\nFile name is not valid.");
-		return (0);
-	}
-	game = malloc(sizeof(t_game));
-	if (game == NULL)
-	{
-		perror("Error\nMemory allocation failed: game");
-		return (0);
-	}
-	game->data = malloc(sizeof(t_data));
-	if (game->data == NULL)
-		exit_game(game, "Error\nMemory allocation failed: game->data");
-	game->data->mlx_ptr = mlx_init();
-	if (game->data->mlx_ptr == NULL)
-		exit_game(game, "error\nmlx_init() failed.");
-	parse_input(argv, game);
-	get_position(game);
-	valid_path_check(game, argv[1]);
-	display_window(game);
+		exit_process("Error\nFile name is not valid.");
+	game.data.mlx_ptr = mlx_init();
+	if (game.data.mlx_ptr == NULL)
+		return(0);
+	parse_input(argv, &game);
+	get_position(&game);
+	valid_path_check(&game, argv[1]);
+	display_window(&game);
 }
 
-// __attribute__((destructor)) static void destructor()
-// {
-// 	system("leaks -q so_long");
-// }
+__attribute__((destructor)) static void destructor()
+{
+	system("leaks -q so_long");
+}

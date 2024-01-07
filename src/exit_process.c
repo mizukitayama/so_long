@@ -1,8 +1,8 @@
 #include "so_long.h"
 
-void	free_2d_array(char **strs, size_t height)
+void free_2d_array(char **strs, size_t height)
 {
-	size_t	i;
+	size_t i;
 
 	i = 0;
 	while (i < height)
@@ -13,39 +13,53 @@ void	free_2d_array(char **strs, size_t height)
 	free(strs);
 }
 
-static void	destroy_images(t_data *data)
+void free_2d_map(t_game *game)
 {
-	if (data->player_ptr != NULL)
+	size_t	i;
+
+	i = 0;
+	if (game->malloc_map)
+	{
+		while (i < game->height)
+		{
+			if (game->map[i] != NULL)
+			{
+				free(game->map[i]);
+				i++;
+			}
+		}
+		free(game->map);
+	}
+}
+
+static void destroy_images(t_data *data)
+{
+	if (data->malloc_player_ptr == true)
 		mlx_destroy_image(data->mlx_ptr, data->player_ptr);
-	if (data->exit_ptr != NULL)
+	if (data->malloc_exit_ptr == true)
 		mlx_destroy_image(data->mlx_ptr, data->exit_ptr);
-	if (data->wall_ptr != NULL)
+	if (data->malloc_wall_ptr == true)
 		mlx_destroy_image(data->mlx_ptr, data->wall_ptr);
-	if (data->collectible_ptr != NULL)
+	if (data->malloc_collectible_ptr == true)
 		mlx_destroy_image(data->mlx_ptr, data->collectible_ptr);
-	if (data->empty_space_ptr != NULL)
+	if (data->malloc_empty_space_ptr == true)
 		mlx_destroy_image(data->mlx_ptr, data->empty_space_ptr);
 }
 
-void	exit_game(t_game *game, char *message)
+void	free_game(t_game *game, char *message)
+{
+	destroy_images(&game->data);
+	// if (game->data.mlx_ptr != NULL && game->data.win_ptr != NULL)
+	// 	mlx_destroy_window(game->data.mlx_ptr, game->data.win_ptr);
+	// if (game->data.mlx_ptr != NULL)
+	// 	mlx_destroy_display(game->data.mlx_ptr);
+	// free(game->data.mlx_ptr);
+	free_2d_map(game);
+	exit_process(message);
+}
+
+void	exit_process(char *message)
 {
 	perror(message);
-	if (game->data != NULL)
-	{
-		destroy_images(game->data);
-		if (game->data->mlx_ptr != NULL && game->data->win_ptr != NULL)
-			mlx_destroy_window(game->data->mlx_ptr, game->data->win_ptr);
-		if (game->data->mlx_ptr != NULL)
-			mlx_destroy_display(game->data->mlx_ptr);
-		free(game->data->mlx_ptr);
-	}
-	if (game != NULL)
-	{
-		if (game->map != NULL)
-			free_2d_array(game->map, game->height);
-		if (game->data != NULL)
-			free(game->data);
-		free(game);
-	}
 	exit(1);
 }

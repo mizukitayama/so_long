@@ -16,7 +16,7 @@ size_t	move_up(t_game *game, size_t moves, size_t *collectibles)
 			&& *collectibles == 0)
 	{
 		ft_printf("You've completed the game in %u moves.\n", moves + 1);
-		exit_game(game, "");
+		free_game(game, "");
 	}
 	if (game->map[game->player_y - 1][game->player_x] == 'C')
 		(*collectibles)--;
@@ -35,7 +35,7 @@ size_t	move_down(t_game *game, size_t moves, size_t *collectibles)
 			&& *collectibles == 0)
 	{
 		ft_printf("You've completed the game in %u moves.\n", moves + 1);
-		exit_game(game, "");
+		free_game(game, "");
 	}
 	if (game->map[game->player_y + 1][game->player_x] == 'C')
 		(*collectibles)--;
@@ -54,7 +54,7 @@ size_t	move_left(t_game *game, size_t moves, size_t *collectibles)
 			&& *collectibles == 0)
 	{
 		ft_printf("You've completed the game in %u moves.\n", moves + 1);
-		exit_game(game, "");
+		free_game(game, "");
 	}
 	if (game->map[game->player_y][game->player_x - 1] == 'C')
 		(*collectibles)--;
@@ -73,7 +73,7 @@ size_t	move_right(t_game *game, size_t moves, size_t *collectibles)
 			&& *collectibles == 0)
 	{
 		ft_printf("You've completed the game in %u moves.\n", moves + 1);
-		exit_game(game, "");
+		free_game(game, "");
 	}
 	if (game->map[game->player_y][game->player_x + 1] == 'C')
 		(*collectibles)--;

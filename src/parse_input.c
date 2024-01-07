@@ -8,7 +8,7 @@ static size_t	get_game_height(char *filename, t_game *game)
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		exit_game(game, "Error\nUnable to open file");
+		free_game(game, "Error\nUnable to open file");
 	height = 0;
 	while (1)
 	{
@@ -32,10 +32,10 @@ static void	check_char(size_t y, t_game *game)
 	{
 		c = game->map[y][x];
 		if (c != '0' && c != '1' && c != 'C' && c != 'E' && c != 'P')
-			exit_game(game, "Error\nInvalid character detected.");
+			free_game(game, "Error\nInvalid character detected.");
 		else if (((y == 0 || y == game->height - 1) && c != '1')
 			|| ((x == 0 || x == game->width - 1) && c != '1'))
-			exit_game(game, "Error\nMap not surrounded by walls.");
+			free_game(game, "Error\nMap not surrounded by walls.");
 		x++;
 	}
 }
@@ -53,7 +53,7 @@ static void	check_content(t_game *game)
 	while (y < game->height)
 	{
 		if (strlen_ignore_new_line(game->map[y]) != game->width)
-			exit_game(game, "Error\nThe map is not rectangular.");
+			free_game(game, "Error\nThe map is not rectangular.");
 		check_char(y, game);
 		map_exit += count_c(game->map[y], 'E');
 		player += count_c(game->map[y], 'P');
@@ -61,11 +61,11 @@ static void	check_content(t_game *game)
 		y++;
 	}
 	if (map_exit != 1)
-		exit_game(game, "Error\nInvalid number of exit.");
+		free_game(game, "Error\nInvalid number of exit.");
 	if (player != 1)
-		exit_game(game, "Error\nInvalid number of player.");
+		free_game(game, "Error\nInvalid number of player.");
 	if (game->collectibles < 1)
-		exit_game(game, "Error\nAt least one collectible required.");
+		free_game(game, "Error\nAt least one collectible required.");
 }
 
 void	parse_input(char **argv, t_game *game)
@@ -76,17 +76,18 @@ void	parse_input(char **argv, t_game *game)
 
 	i = 0;
 	game->height = get_game_height(argv[1], game);
-	game->map = malloc(sizeof(char *) * game->height);
+	game->map = calloc(sizeof(char *), game->height);
 	if (game->map == NULL)
-		exit_game(game, "Error\nMemory allocation failed: game->map");
+		exit_process("Error\nMemory allocation failed: game->map");
+	game->malloc_map = true;
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
-		exit_game(game, "Error\nUnable to open file.");
+		free_game(game, "Error\nUnable to open file.");
 	while (i < game->height)
 	{
 		line = get_next_line(fd);
 		if (line == NULL)
-			exit_game(game, "Error\nError whlie reading file.");
+			free_game(game, "Error\nError whlie reading file.");
 		game->map[i] = line;
 		i++;
 	}

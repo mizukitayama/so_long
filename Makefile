@@ -39,7 +39,8 @@ $(NAME): $(OBJS)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) $(INCLUDE) -o $@ -c $^
+	# $(CC) $(CFLAGS) $(INCLUDE) -o $@ -c $^
+	$(CC) $(INCLUDE) -o $@ -c $^
 
 clean:
 	make clean -C $(GET_NEXT_LINE_DIR)

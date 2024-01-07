@@ -19,15 +19,22 @@ typedef struct s_data
 	void	*wall_ptr;
 	void	*collectible_ptr;
 	void	*empty_space_ptr;
+	bool	malloc_player_ptr;
+	bool	malloc_exit_ptr;
+	bool	malloc_wall_ptr;
+	bool	malloc_collectible_ptr;
+	bool	malloc_empty_space_ptr;
 }	t_data;
 
 typedef struct s_game
 {
 	char		**map;
+	bool		malloc_map;
+	bool		malloc_2d_map;
 	size_t		height;
 	size_t		width;
 	size_t		collectibles;
-	t_data		*data;
+	t_data		data;
 	size_t		player_x;
 	size_t		player_y;
 	size_t		exit_x;
@@ -42,7 +49,7 @@ typedef struct s_position
 
 void	valid_path_check(t_game *game, char *filename);
 void	free_2d_array(char **strs, size_t height);
-void	exit_game(t_game *game, char *message);
+void	free_game(t_game *game, char *message);
 void	display_window(t_game *game);
 size_t	move_up(t_game *game, size_t moves, size_t *collectibles);
 size_t	move_down(t_game *game, size_t moves, size_t *collectibles);
@@ -52,5 +59,6 @@ void	parse_input(char **argv, t_game *game);
 size_t	count_c(char *str, char ch);
 size_t	strlen_ignore_new_line(char *str);
 void	draw_map(t_game *game);
+void	exit_process(char *message);
 
 #	endif

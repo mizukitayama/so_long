@@ -7,26 +7,31 @@ static void	init_images(t_game *game)
 
 	width = 50;
 	height = 50;
-	game->data->player_ptr = mlx_xpm_file_to_image(game->data->mlx_ptr,
+	game->data.player_ptr = mlx_xpm_file_to_image(game->data.mlx_ptr,
 			"assets/bear.xpm", &width, &height);
-	if (game->data->player_ptr == NULL)
-		exit_game(game, "Error\nFailed to create image of bear.");
-	game->data->exit_ptr = mlx_xpm_file_to_image(game->data->mlx_ptr,
+	if (game->data.player_ptr == NULL)
+		free_game(game, "Error\nFailed to create image of bear.");
+	game->data.malloc_player_ptr = true;
+	game->data.exit_ptr = mlx_xpm_file_to_image(game->data.mlx_ptr,
 			"assets/igloo.xpm", &width, &height);
-	if (game->data->exit_ptr == NULL)
-		exit_game(game, "Error\nFailed to create image of exit.");
-	game->data->wall_ptr = mlx_xpm_file_to_image(game->data->mlx_ptr,
+	if (game->data.exit_ptr == NULL)
+		free_game(game, "Error\nFailed to create image of exit.");
+	game->data.malloc_exit_ptr = true;
+	game->data.wall_ptr = mlx_xpm_file_to_image(game->data.mlx_ptr,
 			"assets/ocean.xpm", &width, &height);
-	if (game->data->wall_ptr == NULL)
-		exit_game(game, "Error\nFailed to create image of ocean.");
-	game->data->collectible_ptr = mlx_xpm_file_to_image(game->data->mlx_ptr,
+	if (game->data.wall_ptr == NULL)
+		free_game(game, "Error\nFailed to create image of ocean.");
+	game->data.malloc_wall_ptr = true;
+	game->data.collectible_ptr = mlx_xpm_file_to_image(game->data.mlx_ptr,
 			"assets/fish.xpm", &width, &height);
-	if (game->data->collectible_ptr == NULL)
-		exit_game(game, "Error\nFailed to create image of collectible.");
-	game->data->empty_space_ptr = mlx_xpm_file_to_image(game->data->mlx_ptr,
+	if (game->data.collectible_ptr == NULL)
+		free_game(game, "Error\nFailed to create image of collectible.");
+	game->data.malloc_collectible_ptr = true;
+	game->data.empty_space_ptr = mlx_xpm_file_to_image(game->data.mlx_ptr,
 			"assets/ice.xpm", &width, &height);
-	if (game->data->empty_space_ptr == NULL)
-		exit_game(game, "Error\nFailed to create image of empty space.");
+	if (game->data.empty_space_ptr == NULL)
+		free_game(game, "Error\nFailed to create image of empty space.");
+	game->data.malloc_empty_space_ptr = true;
 }
 
 static void	draw_image(char c, size_t x, size_t y, t_data *data)
@@ -64,7 +69,7 @@ static int	deal_key(int key, t_game *game)
 	else if (key == 2 || key == 124 || key == 100 || key == 65363)
 		moves += move_right(game, moves, &collectibles);
 	else if (key == 53 || key == 65307)
-		exit_game(game, "Exiting prgram.");
+		free_game(game, "Exiting prgram.");
 	if (!(game->exit_x == game->player_x && game->exit_y == game->player_y))
 		game->map[game->exit_y][game->exit_x] = 'E';
 	draw_map(game);
@@ -82,7 +87,7 @@ void	draw_map(t_game *game)
 		x = 0;
 		while (x < game->width)
 		{
-			draw_image(game->map[y][x], x, y, game->data);
+			draw_image(game->map[y][x], x, y, &game->data);
 			x++;
 		}
 		y++;
@@ -91,12 +96,12 @@ void	draw_map(t_game *game)
 
 void	display_window(t_game *game)
 {
-	game->data->win_ptr = mlx_new_window(game->data->mlx_ptr,
+	game->data.win_ptr = mlx_new_window(game->data.mlx_ptr,
 			50 * game->width, 50 * game->height, "so_long");
-	if (game->data->win_ptr == NULL)
-		exit_game(game, "Error\nmlx_new_window() failed.");
+	if (game->data.win_ptr == NULL)
+		free_game(game, "Error\nmlx_new_window() failed.");
 	init_images(game);
 	draw_map(game);
-	mlx_key_hook(game->data->win_ptr, deal_key, game);
-	mlx_loop(game->data->mlx_ptr);
+	mlx_key_hook(game->data.win_ptr, deal_key, game);
+	mlx_loop(game->data.mlx_ptr);
 }

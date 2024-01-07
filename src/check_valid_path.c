@@ -10,10 +10,10 @@ static char	**copy_map(t_game *game, char *filename)
 	i = 0;
 	copy = malloc(sizeof(char *) * game->height);
 	if (copy == NULL)
-		exit_game(game, "Error\nMemory allocation failed: copy");
+		free_game(game, "Error\nMemory allocation failed: copy");
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		exit_game(game, "Error\nUnable to open file.");
+		free_game(game, "Error\nUnable to open file.");
 	while (i < game->height)
 	{
 		line = get_next_line(fd);
@@ -108,20 +108,20 @@ void	valid_path_check(t_game *game, char *filename)
 	i = 0;
 	visited = malloc(sizeof(char *) * game->height);
 	if (visited == NULL)
-		exit_game(game, "Error\nMemory allocation failed: visited");
+		free_game(game, "Error\nMemory allocation failed: visited");
 	while (i < game->height)
 	{
 		visited[i] = malloc(sizeof(char) * game->width);
 		if (visited[i] == NULL)
-			exit_game(game, "Error\nMemory allocation failed: visited");
+			free_game(game, "Error\nMemory allocation failed: visited");
 		i++;
 	}
 	pos.x = game->player_x;
 	pos.y = game->player_y;
 	path_check(game, pos, visited, &valid);
 	if (valid == false)
-		exit_game(game, "Error\nNo valid path to the exit.");
+		free_game(game, "Error\nNo valid path to the exit.");
 	if (check_items_wrapper(game, pos, filename) != 0)
-		exit_game(game, "Error\nSome items are unreachable.");
+		free_game(game, "Error\nSome items are unreachable.");
 	free_2d_array(visited, game->height);
 }
