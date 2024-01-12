@@ -6,11 +6,35 @@
 /*   By: mtayama <mtayama@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:04:07 by mtayama           #+#    #+#             */
-/*   Updated: 2024/01/12 20:05:26 by mtayama          ###   ########.fr       */
+/*   Updated: 2024/01/12 23:18:13 by mtayama          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+static void	init_images_2(t_game *game)
+{
+	int	width;
+	int	height;
+
+	width = 50;
+	height = 50;
+	game->data.wall_ptr = mlx_xpm_file_to_image(game->data.mlx_ptr,
+			"assets/ocean.xpm", &width, &height);
+	if (game->data.wall_ptr == NULL)
+		free_game(game, "Error\nFailed to create image of ocean.");
+	game->data.malloc_wall_ptr = true;
+	game->data.collectible_ptr = mlx_xpm_file_to_image(game->data.mlx_ptr,
+			"assets/fish.xpm", &width, &height);
+	if (game->data.collectible_ptr == NULL)
+		free_game(game, "Error\nFailed to create image of collectible.");
+	game->data.malloc_collectible_ptr = true;
+	game->data.empty_space_ptr = mlx_xpm_file_to_image(game->data.mlx_ptr,
+			"assets/ice.xpm", &width, &height);
+	if (game->data.empty_space_ptr == NULL)
+		free_game(game, "Error\nFailed to create image of empty space.");
+	game->data.malloc_empty_space_ptr = true;
+}
 
 static void	init_images(t_game *game)
 {
@@ -29,21 +53,7 @@ static void	init_images(t_game *game)
 	if (game->data.exit_ptr == NULL)
 		free_game(game, "Error\nFailed to create image of exit.");
 	game->data.malloc_exit_ptr = true;
-	game->data.wall_ptr = mlx_xpm_file_to_image(game->data.mlx_ptr,
-			"assets/ocean.xpm", &width, &height);
-	if (game->data.wall_ptr == NULL)
-		free_game(game, "Error\nFailed to create image of ocean.");
-	game->data.malloc_wall_ptr = true;
-	game->data.collectible_ptr = mlx_xpm_file_to_image(game->data.mlx_ptr,
-			"assets/fish.xpm", &width, &height);
-	if (game->data.collectible_ptr == NULL)
-		free_game(game, "Error\nFailed to create image of collectible.");
-	game->data.malloc_collectible_ptr = true;
-	game->data.empty_space_ptr = mlx_xpm_file_to_image(game->data.mlx_ptr,
-			"assets/ice.xpm", &width, &height);
-	if (game->data.empty_space_ptr == NULL)
-		free_game(game, "Error\nFailed to create image of empty space.");
-	game->data.malloc_empty_space_ptr = true;
+	init_images_2(game);
 }
 
 static void	draw_image(char c, size_t x, size_t y, t_data *data)
@@ -81,12 +91,6 @@ void	draw_map(t_game *game)
 		}
 		y++;
 	}
-}
-
-static int	expose_hook_func(void *game)
-{
-	draw_map(game);
-	return (0);
 }
 
 void	display_window(t_game *game)

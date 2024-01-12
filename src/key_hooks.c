@@ -6,13 +6,13 @@
 /*   By: mtayama <mtayama@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:05:23 by mtayama           #+#    #+#             */
-/*   Updated: 2024/01/12 20:05:24 by mtayama          ###   ########.fr       */
+/*   Updated: 2024/01/12 22:59:36 by mtayama          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int		exit_hook(void *game)
+int	exit_hook(void *game)
 {
 	free_game(game, "Exiting prgram.");
 	return (0);
@@ -41,3 +41,8 @@ int	deal_key(int key, t_game *game)
 	return (0);
 }
 
+int	expose_hook_func(void *game)
+{
+	draw_map(game);
+	return (0);
+}

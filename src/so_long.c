@@ -6,7 +6,7 @@
 /*   By: mtayama <mtayama@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:05:34 by mtayama           #+#    #+#             */
-/*   Updated: 2024/01/12 20:05:35 by mtayama          ###   ########.fr       */
+/*   Updated: 2024/01/12 23:21:01 by mtayama          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	main(int argc, char **argv)
 		exit_process("Error\nFile name is not valid.");
 	game.data.mlx_ptr = mlx_init();
 	if (game.data.mlx_ptr == NULL)
-		return(0);
+		return (0);
 	game.data.malloc_mlx_ptr = true;
 	parse_input(argv, &game);
 	get_position(&game);
@@ -68,7 +68,7 @@ int	main(int argc, char **argv)
 	display_window(&game);
 }
 
-__attribute__((destructor)) static void destructor()
-{
-	system("leaks -q so_long");
-}
+// __attribute__((destructor)) static void destructor()
+// {
+// 	system("leaks -q so_long");
+// }

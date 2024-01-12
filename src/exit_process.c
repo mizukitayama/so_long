@@ -6,15 +6,15 @@
 /*   By: mtayama <mtayama@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:05:20 by mtayama           #+#    #+#             */
-/*   Updated: 2024/01/12 20:05:58 by mtayama          ###   ########.fr       */
+/*   Updated: 2024/01/12 22:58:25 by mtayama          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void free_2d_array(char **strs, size_t height)
+void	free_2d_array(char **strs, size_t height)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (i < height)
@@ -25,7 +25,7 @@ void free_2d_array(char **strs, size_t height)
 	free(strs);
 }
 
-void free_2d_map(t_game *game)
+void	free_2d_map(t_game *game)
 {
 	size_t	i;
 
@@ -44,7 +44,7 @@ void free_2d_map(t_game *game)
 	}
 }
 
-static void destroy_images(t_data *data)
+static void	destroy_images(t_data *data)
 {
 	if (data->malloc_player_ptr == true)
 		mlx_destroy_image(data->mlx_ptr, data->player_ptr);

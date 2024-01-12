@@ -6,7 +6,7 @@
 /*   By: mtayama <mtayama@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:05:36 by mtayama           #+#    #+#             */
-/*   Updated: 2024/01/12 20:05:37 by mtayama          ###   ########.fr       */
+/*   Updated: 2024/01/12 22:59:45 by mtayama          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,6 @@ void	exit_process(char *message);
 void	*ft_calloc(size_t number, size_t size);
 int		deal_key(int key, t_game *game);
 int		exit_hook(void *game);
+int		expose_hook_func(void *game);
 
 #	endif
