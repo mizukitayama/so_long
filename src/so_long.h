@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtayama <mtayama@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/12 20:05:36 by mtayama           #+#    #+#             */
+/*   Updated: 2024/01/12 20:05:37 by mtayama          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #	ifndef SO_LONG_H
 # define SO_LONG_H
 
@@ -62,5 +74,7 @@ size_t	strlen_ignore_new_line(char *str);
 void	draw_map(t_game *game);
 void	exit_process(char *message);
 void	*ft_calloc(size_t number, size_t size);
+int		deal_key(int key, t_game *game);
+int		exit_hook(void *game);
 
 #	endif

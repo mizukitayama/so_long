@@ -6,7 +6,7 @@
 /*   By: mtayama <mtayama@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 15:13:27 by mtayama           #+#    #+#             */
-/*   Updated: 2024/01/12 18:04:33 by mtayama          ###   ########.fr       */
+/*   Updated: 2024/01/12 20:05:40 by mtayama          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	*ft_calloc(size_t number, size_t size)
 	void	*p;
 
 	if ((number * size) == 0)
-		return ((void *)ft_strdup(""));
+		return (NULL);
 	if (size != 0 && number > (size_t)SIZE_MAX / size)
 	{
 		return (NULL);
