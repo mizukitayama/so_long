@@ -76,7 +76,7 @@ void	parse_input(char **argv, t_game *game)
 
 	i = 0;
 	game->height = get_game_height(argv[1], game);
-	game->map = calloc(sizeof(char *), game->height);
+	game->map = ft_calloc(sizeof(char *), game->height);
 	if (game->map == NULL)
 		exit_process("Error\nMemory allocation failed: game->map");
 	game->malloc_map = true;

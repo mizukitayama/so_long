@@ -100,6 +100,7 @@ void	display_window(t_game *game)
 			50 * game->width, 50 * game->height, "so_long");
 	if (game->data.win_ptr == NULL)
 		free_game(game, "Error\nmlx_new_window() failed.");
+	game->data.malloc_win_ptr = true;
 	init_images(game);
 	draw_map(game);
 	mlx_key_hook(game->data.win_ptr, deal_key, game);

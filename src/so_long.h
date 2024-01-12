@@ -19,6 +19,8 @@ typedef struct s_data
 	void	*wall_ptr;
 	void	*collectible_ptr;
 	void	*empty_space_ptr;
+	bool	malloc_mlx_ptr;
+	bool	malloc_win_ptr;
 	bool	malloc_player_ptr;
 	bool	malloc_exit_ptr;
 	bool	malloc_wall_ptr;
@@ -30,7 +32,6 @@ typedef struct s_game
 {
 	char		**map;
 	bool		malloc_map;
-	bool		malloc_2d_map;
 	size_t		height;
 	size_t		width;
 	size_t		collectibles;
@@ -60,5 +61,6 @@ size_t	count_c(char *str, char ch);
 size_t	strlen_ignore_new_line(char *str);
 void	draw_map(t_game *game);
 void	exit_process(char *message);
+void	*ft_calloc(size_t number, size_t size);
 
 #	endif

@@ -49,6 +49,7 @@ int	main(int argc, char **argv)
 	game.data.mlx_ptr = mlx_init();
 	if (game.data.mlx_ptr == NULL)
 		return(0);
+	game.data.malloc_mlx_ptr = true;
 	parse_input(argv, &game);
 	get_position(&game);
 	valid_path_check(&game, argv[1]);

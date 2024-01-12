@@ -49,11 +49,10 @@ static void destroy_images(t_data *data)
 void	free_game(t_game *game, char *message)
 {
 	destroy_images(&game->data);
-	// if (game->data.mlx_ptr != NULL && game->data.win_ptr != NULL)
-	// 	mlx_destroy_window(game->data.mlx_ptr, game->data.win_ptr);
-	// if (game->data.mlx_ptr != NULL)
-	// 	mlx_destroy_display(game->data.mlx_ptr);
-	// free(game->data.mlx_ptr);
+	if (game->data.malloc_mlx_ptr == true && game->data.malloc_win_ptr == true)
+		mlx_destroy_window(game->data.mlx_ptr, game->data.win_ptr);
+	if (game->data.malloc_mlx_ptr == true)
+		mlx_destroy_display(game->data.mlx_ptr);
 	free_2d_map(game);
 	exit_process(message);
 }
