@@ -6,7 +6,7 @@
 /*   By: mtayama <mtayama@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:04:07 by mtayama           #+#    #+#             */
-/*   Updated: 2024/01/12 23:18:13 by mtayama          ###   ########.fr       */
+/*   Updated: 2024/01/13 00:12:59 by mtayama          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@ static void	init_images_2(t_game *game)
 	width = 50;
 	height = 50;
 	game->data.wall_ptr = mlx_xpm_file_to_image(game->data.mlx_ptr,
-			"assets/ocean.xpm", &width, &height);
+			WALL_IMAGE, &width, &height);
 	if (game->data.wall_ptr == NULL)
 		free_game(game, "Error\nFailed to create image of ocean.");
 	game->data.malloc_wall_ptr = true;
 	game->data.collectible_ptr = mlx_xpm_file_to_image(game->data.mlx_ptr,
-			"assets/fish.xpm", &width, &height);
+			COLLECTIBLE_IMAGE, &width, &height);
 	if (game->data.collectible_ptr == NULL)
 		free_game(game, "Error\nFailed to create image of collectible.");
 	game->data.malloc_collectible_ptr = true;
 	game->data.empty_space_ptr = mlx_xpm_file_to_image(game->data.mlx_ptr,
-			"assets/ice.xpm", &width, &height);
+			EMPTY_SPACE_IMAGE, &width, &height);
 	if (game->data.empty_space_ptr == NULL)
 		free_game(game, "Error\nFailed to create image of empty space.");
 	game->data.malloc_empty_space_ptr = true;
@@ -44,12 +44,12 @@ static void	init_images(t_game *game)
 	width = 50;
 	height = 50;
 	game->data.player_ptr = mlx_xpm_file_to_image(game->data.mlx_ptr,
-			"assets/bear.xpm", &width, &height);
+			PLAYER_IMAGE, &width, &height);
 	if (game->data.player_ptr == NULL)
 		free_game(game, "Error\nFailed to create image of bear.");
 	game->data.malloc_player_ptr = true;
 	game->data.exit_ptr = mlx_xpm_file_to_image(game->data.mlx_ptr,
-			"assets/igloo.xpm", &width, &height);
+			EXIT_IMAGE, &width, &height);
 	if (game->data.exit_ptr == NULL)
 		free_game(game, "Error\nFailed to create image of exit.");
 	game->data.malloc_exit_ptr = true;

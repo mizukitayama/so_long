@@ -6,7 +6,7 @@
 /*   By: mtayama <mtayama@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:05:20 by mtayama           #+#    #+#             */
-/*   Updated: 2024/01/12 22:58:25 by mtayama          ###   ########.fr       */
+/*   Updated: 2024/01/13 00:15:08 by mtayama          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	free_2d_array(char **strs, size_t height)
 	free(strs);
 }
 
-void	free_2d_map(t_game *game)
+static void	free_2d_map(t_game *game)
 {
 	size_t	i;
 

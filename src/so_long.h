@@ -6,7 +6,7 @@
 /*   By: mtayama <mtayama@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:05:36 by mtayama           #+#    #+#             */
-/*   Updated: 2024/01/12 22:59:45 by mtayama          ###   ########.fr       */
+/*   Updated: 2024/01/13 00:12:26 by mtayama          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@
 # include <stdbool.h>
 # include "../get_next_line/get_next_line.h"
 # include "../printf/inc/ft_printf.h"
+
+# define WALL_IMAGE "assets/ocean.xpm"
+# define COLLECTIBLE_IMAGE "assets/fish.xpm"
+# define EMPTY_SPACE_IMAGE "assets/ice.xpm"
+# define PLAYER_IMAGE "assets/bear.xpm"
+# define EXIT_IMAGE "assets/igloo.xpm"
 
 typedef struct s_data
 {
