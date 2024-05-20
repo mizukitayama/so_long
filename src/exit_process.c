@@ -50,10 +50,14 @@ static void	destroy_images(t_data *data)
 		mlx_destroy_image(data->mlx_ptr, data->player_ptr);
 	if (data->malloc_exit_ptr == true)
 		mlx_destroy_image(data->mlx_ptr, data->exit_ptr);
-	if (data->malloc_wall_ptr == true)
-		mlx_destroy_image(data->mlx_ptr, data->wall_ptr);
-	if (data->malloc_collectible_ptr == true)
-		mlx_destroy_image(data->mlx_ptr, data->collectible_ptr);
+	if (data->malloc_wall1_ptr == true)
+		mlx_destroy_image(data->mlx_ptr, data->wall1_ptr);
+	if (data->malloc_wall2_ptr == true)
+		mlx_destroy_image(data->mlx_ptr, data->wall2_ptr);
+	if (data->malloc_collectible1_ptr == true)
+		mlx_destroy_image(data->mlx_ptr, data->collectible1_ptr);
+	if (data->malloc_collectible2_ptr == true)
+		mlx_destroy_image(data->mlx_ptr, data->collectible2_ptr);
 	if (data->malloc_empty_space_ptr == true)
 		mlx_destroy_image(data->mlx_ptr, data->empty_space_ptr);
 }

@@ -5,7 +5,8 @@ LDLIBS  = -lX11 -lXext -framework OpenGL -framework AppKit
 
 RM      = rm -rf
 
-SRCS    = so_long.c parse_input.c utils.c map.c move.c exit_process.c check_valid_path.c key_hooks.c
+SRCS    = so_long.c parse_input.c utils.c map.c move.c exit_process.c \
+					check_valid_path.c key_hooks.c init_images.c animation.c
 
 GET_NEXT_LINE_DIR = get_next_line/
 GET_NEXT_LINE = get_next_line.a
@@ -39,8 +40,7 @@ $(NAME): $(OBJS)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	mkdir -p $(OBJ_DIR)
-	# $(CC) $(CFLAGS) $(INCLUDE) -o $@ -c $^
-	$(CC) $(INCLUDE) -o $@ -c $^
+	$(CC) $(CFLAGS) $(INCLUDE) -o $@ -c $^
 
 clean:
 	make clean -C $(GET_NEXT_LINE_DIR)

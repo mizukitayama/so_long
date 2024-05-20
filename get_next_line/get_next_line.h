@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#	ifndef GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
@@ -20,7 +20,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-size_t	ft_strlen(char *str);
+size_t	ft_strlen(const char *str);
 char	*ft_strchr(char *s, int c);
 char	*combine_strs(char *save, char *buf);
 char	*get_next_line(int fd);
