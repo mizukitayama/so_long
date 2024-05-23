@@ -70,16 +70,19 @@ void	move_enemy(t_game *game)
 {
 	int		direction;
 	bool	moved;
+	int		tries;
 
 	moved = false;
+	tries = 0;
 	if (game->enemy_x == 0 && game->enemy_y == 0)
 		return ;
-	while (!moved)
+	while (!moved && tries < 100)
 	{
 		direction = rand() % 4 + 1;
 		if (direction <= 2)
 			moved = move_vertical(game, direction);
 		else
 			moved = move_horizontal(game, direction);
+		tries ++;
 	}
 }
