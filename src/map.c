@@ -29,6 +29,9 @@ static void	draw_image(char c, size_t x, size_t y, t_data *data)
 	else if (c == 'P')
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			data->player_ptr, 50 * x, 50 * y);
+	else if (c == 'X')
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			data->enemy_ptr, 50 * x, 50 * y);
 }
 
 void	draw_map(t_game *game)

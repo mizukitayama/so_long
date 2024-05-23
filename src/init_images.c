@@ -17,6 +17,11 @@ static void	init_images_3(t_game *game)
 	if (game->data.collectible2_ptr == NULL)
 		free_game(game, "Error\nFailed to create image of collectible.");
 	game->data.malloc_collectible2_ptr = true;
+	game->data.enemy_ptr = mlx_xpm_file_to_image(game->data.mlx_ptr,
+			ENEMY_IMAGE, &width, &height);
+	if (game->data.enemy_ptr == NULL)
+		free_game(game, "Error\nFailed to create image of enemy.");
+	game->data.malloc_enemy_ptr = true;
 }
 
 static void	init_images_2(t_game *game)

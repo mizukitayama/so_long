@@ -60,6 +60,8 @@ static void	destroy_images(t_data *data)
 		mlx_destroy_image(data->mlx_ptr, data->collectible2_ptr);
 	if (data->malloc_empty_space_ptr == true)
 		mlx_destroy_image(data->mlx_ptr, data->empty_space_ptr);
+	if (data->malloc_enemy_ptr == true)
+		mlx_destroy_image(data->mlx_ptr, data->enemy_ptr);
 }
 
 void	free_game(t_game *game, char *message)

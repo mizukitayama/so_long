@@ -65,6 +65,7 @@ int	main(int argc, char **argv)
 	parse_input(argv, &game);
 	get_position(&game);
 	valid_path_check(&game, argv[1]);
+	place_enemy(&game);
 	display_window(&game);
 }
 

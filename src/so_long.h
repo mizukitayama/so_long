@@ -29,6 +29,7 @@
 # define EMPTY_SPACE_IMAGE "assets/ice.xpm"
 # define PLAYER_IMAGE "assets/bear.xpm"
 # define EXIT_IMAGE "assets/igloo.xpm"
+# define ENEMY_IMAGE "assets/inuit.xpm"
 
 typedef struct s_data
 {
@@ -43,6 +44,7 @@ typedef struct s_data
 	void	*collectible1_ptr;
 	void	*collectible2_ptr;
 	void	*empty_space_ptr;
+	void	*enemy_ptr;
 	bool	malloc_mlx_ptr;
 	bool	malloc_win_ptr;
 	bool	malloc_player_ptr;
@@ -52,6 +54,7 @@ typedef struct s_data
 	bool	malloc_collectible1_ptr;
 	bool	malloc_collectible2_ptr;
 	bool	malloc_empty_space_ptr;
+	bool	malloc_enemy_ptr;
 }	t_data;
 
 typedef struct s_game
@@ -66,6 +69,8 @@ typedef struct s_game
 	size_t		player_y;
 	size_t		exit_x;
 	size_t		exit_y;
+	size_t		enemy_x;
+	size_t		enemy_y;
 	size_t		frame;
 }	t_game;
 
@@ -94,5 +99,7 @@ int		exit_hook(void *game);
 int		expose_hook_func(void *game);
 int		animation(t_game *game);
 void	init_images(t_game *game);
+void	place_enemy(t_game *game);
+void	move_enemy(t_game *game);
 
 #endif
