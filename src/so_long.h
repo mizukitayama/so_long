@@ -57,14 +57,39 @@ typedef struct s_data
 	bool	malloc_enemy_ptr;
 }	t_data;
 
+typedef struct s_nums
+{
+	void	*zero_ptr;
+	void	*one_ptr;
+	void	*two_ptr;
+	void	*three_ptr;
+	void	*four_ptr;
+	void	*five_ptr;
+	void	*six_ptr;
+	void	*seven_ptr;
+	void	*eight_ptr;
+	void	*nine_ptr;
+	bool	malloc_zero_ptr;
+	bool	malloc_one_ptr;
+	bool	malloc_two_ptr;
+	bool	malloc_three_ptr;
+	bool	malloc_four_ptr;
+	bool	malloc_five_ptr;
+	bool	malloc_six_ptr;
+	bool	malloc_seven_ptr;
+	bool	malloc_eight_ptr;
+	bool	malloc_nine_ptr;
+} t_nums;
+
 typedef struct s_game
 {
+	t_data		data;
+	t_nums		nums;
 	char		**map;
 	bool		malloc_map;
 	size_t		height;
 	size_t		width;
 	size_t		collectibles;
-	t_data		data;
 	size_t		player_x;
 	size_t		player_y;
 	size_t		exit_x;
@@ -72,6 +97,7 @@ typedef struct s_game
 	size_t		enemy_x;
 	size_t		enemy_y;
 	size_t		frame;
+	size_t		moves;
 }	t_game;
 
 typedef struct s_position
@@ -84,10 +110,10 @@ void	valid_path_check(t_game *game, char *filename);
 void	free_2d_array(char **strs, size_t height);
 void	free_game(t_game *game, char *message);
 void	display_window(t_game *game);
-size_t	move_up(t_game *game, size_t moves, size_t *collectibles);
-size_t	move_down(t_game *game, size_t moves, size_t *collectibles);
-size_t	move_left(t_game *game, size_t moves, size_t *collectibles);
-size_t	move_right(t_game *game, size_t moves, size_t *collectibles);
+size_t	move_up(t_game *game, size_t *collectibles);
+size_t	move_down(t_game *game, size_t *collectibles);
+size_t	move_left(t_game *game, size_t *collectibles);
+size_t	move_right(t_game *game, size_t *collectibles);
 void	parse_input(char **argv, t_game *game);
 size_t	count_c(char *str, char ch);
 size_t	strlen_ignore_new_line(char *str);
@@ -101,5 +127,6 @@ int		animation(t_game *game);
 void	init_images(t_game *game);
 void	place_enemy(t_game *game);
 void	move_enemy(t_game *game);
+void	init_images_nums(t_game *game, int width, int height);
 
 #endif

@@ -66,6 +66,7 @@ int	main(int argc, char **argv)
 	get_position(&game);
 	valid_path_check(&game, argv[1]);
 	place_enemy(&game);
+	game.moves = 0;
 	display_window(&game);
 }
 

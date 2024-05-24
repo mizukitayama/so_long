@@ -44,6 +44,30 @@ static void	free_2d_map(t_game *game)
 	}
 }
 
+static void	destroy_images_nums(t_game *game)
+{
+	if (game->nums.malloc_zero_ptr == true)
+		mlx_destroy_image(game->data.mlx_ptr, game->nums.zero_ptr);
+	if (game->nums.malloc_one_ptr == true)
+		mlx_destroy_image(game->data.mlx_ptr, game->nums.one_ptr);
+	if (game->nums.malloc_two_ptr == true)
+		mlx_destroy_image(game->data.mlx_ptr, game->nums.two_ptr);
+	if (game->nums.malloc_three_ptr == true)
+		mlx_destroy_image(game->data.mlx_ptr, game->nums.three_ptr);
+	if (game->nums.malloc_four_ptr == true)
+		mlx_destroy_image(game->data.mlx_ptr, game->nums.four_ptr);
+	if (game->nums.malloc_five_ptr == true)
+		mlx_destroy_image(game->data.mlx_ptr, game->nums.five_ptr);
+	if (game->nums.malloc_six_ptr == true)
+		mlx_destroy_image(game->data.mlx_ptr, game->nums.six_ptr);
+	if (game->nums.malloc_seven_ptr == true)
+		mlx_destroy_image(game->data.mlx_ptr, game->nums.seven_ptr);
+	if (game->nums.malloc_eight_ptr == true)
+		mlx_destroy_image(game->data.mlx_ptr, game->nums.eight_ptr);
+	if (game->nums.malloc_nine_ptr == true)
+		mlx_destroy_image(game->data.mlx_ptr, game->nums.nine_ptr);
+}
+
 static void	destroy_images(t_data *data)
 {
 	if (data->malloc_player_ptr == true)
@@ -67,6 +91,7 @@ static void	destroy_images(t_data *data)
 void	free_game(t_game *game, char *message)
 {
 	destroy_images(&game->data);
+	destroy_images_nums(game);
 	if (game->data.malloc_mlx_ptr == true && game->data.malloc_win_ptr == true)
 		mlx_destroy_window(game->data.mlx_ptr, game->data.win_ptr);
 	if (game->data.malloc_mlx_ptr == true)

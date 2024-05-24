@@ -34,6 +34,64 @@ static void	draw_image(char c, size_t x, size_t y, t_data *data)
 			data->enemy_ptr, 50 * x, 50 * y);
 }
 
+static void	display_nums(t_game *game, size_t display, size_t width)
+{
+	if (display == 0)
+		mlx_put_image_to_window(game->data.mlx_ptr, game->data.win_ptr,
+			game->nums.zero_ptr, width, 50 * game->height);
+	else if (display == 1)
+		mlx_put_image_to_window(game->data.mlx_ptr, game->data.win_ptr,
+			game->nums.one_ptr, width, 50 * game->height);
+	else if (display == 2)
+		mlx_put_image_to_window(game->data.mlx_ptr, game->data.win_ptr,
+			game->nums.two_ptr, width, 50 * game->height);
+	else if (display == 3)
+		mlx_put_image_to_window(game->data.mlx_ptr, game->data.win_ptr,
+			game->nums.three_ptr, width, 50 * game->height);
+	else if (display == 4)
+		mlx_put_image_to_window(game->data.mlx_ptr, game->data.win_ptr,
+			game->nums.four_ptr, width, 50 * game->height);
+	else if (display == 5)
+		mlx_put_image_to_window(game->data.mlx_ptr, game->data.win_ptr,
+			game->nums.five_ptr, width, 50 * game->height);
+	else if (display == 6)
+		mlx_put_image_to_window(game->data.mlx_ptr, game->data.win_ptr,
+			game->nums.six_ptr, width, 50 * game->height);
+	else if (display == 7)
+		mlx_put_image_to_window(game->data.mlx_ptr, game->data.win_ptr,
+			game->nums.seven_ptr, width, 50 * game->height);
+	else if (display == 8)
+		mlx_put_image_to_window(game->data.mlx_ptr, game->data.win_ptr,
+			game->nums.eight_ptr, width, 50 * game->height);
+	else if (display == 9)
+		mlx_put_image_to_window(game->data.mlx_ptr, game->data.win_ptr,
+			game->nums.nine_ptr, width, 50 * game->height);
+}
+
+static void	print_moves(t_game *game, size_t moves)
+{
+	size_t	display;
+	size_t	count;
+
+	count = 0;
+	while (moves > 0)
+	{
+		count ++;
+		if (moves >= 10)
+		{
+			display = moves % 10;
+			moves /= 10;
+		}
+		else
+		{
+			display = moves;
+			moves = 0;
+		}
+		printf("display: %zu\n", display);
+		display_nums(game, display, (game->width - 1) * 50 - count * 50);
+	}
+}
+
 void	draw_map(t_game *game)
 {
 	size_t	x;
@@ -50,12 +108,13 @@ void	draw_map(t_game *game)
 		}
 		y++;
 	}
+	print_moves(game, game->moves);
 }
 
 void	display_window(t_game *game)
 {
 	game->data.win_ptr = mlx_new_window(game->data.mlx_ptr,
-			50 * game->width, 50 * game->height, "so_long");
+			50 * game->width, 50 * (game->height) + 32, "so_long");
 	if (game->data.win_ptr == NULL)
 		free_game(game, "Error\nmlx_new_window() failed.");
 	game->data.malloc_win_ptr = true;

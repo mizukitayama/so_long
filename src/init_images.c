@@ -67,4 +67,5 @@ void	init_images(t_game *game)
 	game->data.malloc_exit_ptr = true;
 	init_images_2(game);
 	init_images_3(game);
+	init_images_nums(game, width, height);
 }
