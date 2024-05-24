@@ -36,6 +36,8 @@ int	deal_key(int key, t_game *game)
 		free_game(game, "Exiting prgram.");
 	if (!(game->exit_x == game->player_x && game->exit_y == game->player_y))
 		game->map[game->exit_y][game->exit_x] = 'E';
+	if (game->moves >= 1000)
+		free_game(game, "You've reached the maximum number of moves.");
 	draw_map(game);
 	return (0);
 }

@@ -128,5 +128,6 @@ void	init_images(t_game *game);
 void	place_enemy(t_game *game);
 void	move_enemy(t_game *game);
 void	init_images_nums(t_game *game, int width, int height);
+void	print_moves(t_game *game, size_t moves);
 
 #endif
