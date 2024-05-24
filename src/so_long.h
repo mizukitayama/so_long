@@ -6,7 +6,7 @@
 /*   By: mtayama <mtayama@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:05:36 by mtayama           #+#    #+#             */
-/*   Updated: 2024/01/13 00:12:26 by mtayama          ###   ########.fr       */
+/*   Updated: 2024/05/24 19:31:38 by mtayama          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <stdbool.h>
+# include <time.h>
 # include "../get_next_line/get_next_line.h"
 # include "../printf/inc/ft_printf.h"
 

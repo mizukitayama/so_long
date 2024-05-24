@@ -6,7 +6,7 @@
 /*   By: mtayama <mtayama@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:05:34 by mtayama           #+#    #+#             */
-/*   Updated: 2024/05/24 19:22:53 by mtayama          ###   ########.fr       */
+/*   Updated: 2024/05/24 19:29:27 by mtayama          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int	main(int argc, char **argv)
 	t_game	game;
 
 	ft_memset(&game, 0, sizeof(t_game));
+	srand((unsigned int)time(NULL));
 	if (argc != 2 || !is_valid_extension(argv[1]))
 		exit_process("Error\nFile name is not valid.");
 	game.data.mlx_ptr = mlx_init();
