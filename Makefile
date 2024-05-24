@@ -7,7 +7,7 @@ RM      = rm -rf
 
 SRCS    = so_long.c parse_input.c utils.c map.c move.c exit_process.c \
 					check_valid_path.c key_hooks.c init_images.c animation.c enemy.c \
-					init_num_images.c display_moves.c
+					init_num_images.c display_moves.c destroy_images.c
 
 GET_NEXT_LINE_DIR = get_next_line/
 GET_NEXT_LINE = get_next_line.a

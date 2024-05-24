@@ -79,7 +79,7 @@ typedef struct s_nums
 	bool	malloc_seven_ptr;
 	bool	malloc_eight_ptr;
 	bool	malloc_nine_ptr;
-} t_nums;
+}	t_nums;
 
 typedef struct s_game
 {
@@ -129,5 +129,7 @@ void	place_enemy(t_game *game);
 void	move_enemy(t_game *game);
 void	init_images_nums(t_game *game, int width, int height);
 void	print_moves(t_game *game, size_t moves);
+void	destroy_images_nums(t_game *game);
+void	destroy_images(t_data *data);
 
 #endif

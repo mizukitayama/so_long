@@ -1,5 +1,24 @@
 #include "so_long.h"
 
+static void	display_nums_2(t_game *game, size_t display, size_t width)
+{
+	if (display == 5)
+		mlx_put_image_to_window(game->data.mlx_ptr, game->data.win_ptr,
+			game->nums.five_ptr, width, 50 * game->height);
+	else if (display == 6)
+		mlx_put_image_to_window(game->data.mlx_ptr, game->data.win_ptr,
+			game->nums.six_ptr, width, 50 * game->height);
+	else if (display == 7)
+		mlx_put_image_to_window(game->data.mlx_ptr, game->data.win_ptr,
+			game->nums.seven_ptr, width, 50 * game->height);
+	else if (display == 8)
+		mlx_put_image_to_window(game->data.mlx_ptr, game->data.win_ptr,
+			game->nums.eight_ptr, width, 50 * game->height);
+	else if (display == 9)
+		mlx_put_image_to_window(game->data.mlx_ptr, game->data.win_ptr,
+			game->nums.nine_ptr, width, 50 * game->height);
+}
+
 static void	display_nums(t_game *game, size_t display, size_t width)
 {
 	if (display == 0)
@@ -17,21 +36,7 @@ static void	display_nums(t_game *game, size_t display, size_t width)
 	else if (display == 4)
 		mlx_put_image_to_window(game->data.mlx_ptr, game->data.win_ptr,
 			game->nums.four_ptr, width, 50 * game->height);
-	else if (display == 5)
-		mlx_put_image_to_window(game->data.mlx_ptr, game->data.win_ptr,
-			game->nums.five_ptr, width, 50 * game->height);
-	else if (display == 6)
-		mlx_put_image_to_window(game->data.mlx_ptr, game->data.win_ptr,
-			game->nums.six_ptr, width, 50 * game->height);
-	else if (display == 7)
-		mlx_put_image_to_window(game->data.mlx_ptr, game->data.win_ptr,
-			game->nums.seven_ptr, width, 50 * game->height);
-	else if (display == 8)
-		mlx_put_image_to_window(game->data.mlx_ptr, game->data.win_ptr,
-			game->nums.eight_ptr, width, 50 * game->height);
-	else if (display == 9)
-		mlx_put_image_to_window(game->data.mlx_ptr, game->data.win_ptr,
-			game->nums.nine_ptr, width, 50 * game->height);
+	display_nums_2(game, display, width);
 }
 
 void	print_moves(t_game *game, size_t moves)
