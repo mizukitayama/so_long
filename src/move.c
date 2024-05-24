@@ -37,6 +37,7 @@ size_t	move_up(t_game *game, size_t *collectibles)
 	game->map[game->player_y][game->player_x] = '0';
 	game->player_y--;
 	game->map[game->player_y][game->player_x] = 'P';
+	ft_printf("moves: %u\n", game->moves + 1);
 	return (1);
 }
 
@@ -58,6 +59,7 @@ size_t	move_down(t_game *game, size_t *collectibles)
 	game->map[game->player_y][game->player_x] = '0';
 	game->player_y++;
 	game->map[game->player_y][game->player_x] = 'P';
+	ft_printf("moves: %u\n", game->moves + 1);
 	return (1);
 }
 
@@ -79,6 +81,7 @@ size_t	move_left(t_game *game, size_t *collectibles)
 	game->map[game->player_y][game->player_x] = '0';
 	game->player_x--;
 	game->map[game->player_y][game->player_x] = 'P';
+	ft_printf("moves: %u\n", game->moves + 1);
 	return (1);
 }
 
@@ -100,5 +103,6 @@ size_t	move_right(t_game *game, size_t *collectibles)
 	game->map[game->player_y][game->player_x] = '0';
 	game->player_x++;
 	game->map[game->player_y][game->player_x] = 'P';
+	ft_printf("moves: %u\n", game->moves + 1);
 	return (1);
 }
