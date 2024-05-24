@@ -6,7 +6,7 @@
 /*   By: mtayama <mtayama@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:05:23 by mtayama           #+#    #+#             */
-/*   Updated: 2024/01/12 22:59:36 by mtayama          ###   ########.fr       */
+/*   Updated: 2024/05/24 19:48:49 by mtayama          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	exit_hook(void *game)
 {
-	free_game(game, "Exiting prgram.");
+	free_game(game, "Exiting program.");
 	return (0);
 }
 
@@ -33,7 +33,7 @@ int	deal_key(int key, t_game *game)
 	else if (key == 2 || key == 124 || key == 100 || key == 65363)
 		game->moves += move_right(game, &collectibles);
 	else if (key == 53 || key == 65307)
-		free_game(game, "Exiting prgram.");
+		free_game(game, "Exiting program.");
 	if (!(game->exit_x == game->player_x && game->exit_y == game->player_y))
 		game->map[game->exit_y][game->exit_x] = 'E';
 	if (game->moves >= 1000)
